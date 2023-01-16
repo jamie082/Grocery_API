@@ -23,46 +23,40 @@ db = SQLAlchemy(app)
 class Note(db.Model):
     id = db.Column(db.String(80), unique=True, nullable=False, primary_key=True)
 
-@app.route("/", methods=["GET", "POST"]) # CRUD and SQLALchemy operations
-def home():
-    if request.form == "POST":
-        # access "title" from app_index.html
-        id = Note(request.form.get(id=request.form.get("title")))
-        db.session.add(id)
-        db.session.commit()
-
-    # load web site and issue query command to DB
-
-    notes = Note.query.all()
-    return render_template("app_index.html", notes=notes)
-
-def create_note(text):
-    note = Note(text=text)
-    
-    # database commands SQLAlchemy
-    db.session.add(id)
-    db.session.commit()
-    db.session.refresh(id)
-
-def read_notes():
-    return db.session.query(Note).all()
-
-@app.route("/", methods=["GET", "POST"]) # post commands below (execute FLASK)
-def view_index():
-    if request.method == "POST":
-        create_note(request.form['title'])
-        
-    return render_template("app_index.html", notes=read_notes())
-        
-    # SQLALchemy commands
+    def __repr(self_):
+        return "<Title: {}".format(self.id)
 
 @app.route("/update", methods=["POST"]) # CRUD operations and FLASK operations
 def update():
-    db.session.query(Note).update() # SQLAlchemy commands
-    db.session.commit()
+    newtitle = request.form.get("newtitle")
+    oldtitle = request.form.get("oldtitle")
 
-def delete_note():
-    db.session.query(Note).filter_by(id=note_id).delete() # SQLAlchemy commands
+    if newtitle is None:
+        raise EMError("Specify entry")
+    else:
+        pass
+
+    if oldtitle is None:
+        raise EMError("Specify entry")
+    else:
+        pass
+
+    book = Note.query.filter_by(id=oldtitle).first()
+    book.id = newtitle
+    db.session.commit()
+    return redirect("/") 
+
+@app.route("/", methods=["GET", "POST"]) # post commands below (execute FLASK)
+def home():
+    if request.form:
+        book = Note(id=request.form.get("id"))
+
+        db.session.add(book)
+        db.session.commit()
+
+    books = Note.query.all() # SQLAlchemy commands
+
+    return render_template("app_index.html", books=books)
 
 if __name__ == "__main__":
     app.run(debug=True)
