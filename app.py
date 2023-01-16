@@ -21,13 +21,15 @@ app.config["SQLALCHEMY_DATABASE_URI"] = database_file
 db = SQLAlchemy(app)
 
 class Note(db.Model):
-    id = db.Column(db.Integer, primary_key=True, autoincrement=True)
+    id = db.Column(db.String(80), unique=True, nullable=False, primary_key=True)
 
 @app.route("/", methods=["GET", "POST"]) # CRUD and SQLALchemy operations
 def home():
     if request.form == "POST":
         # access "title" from app_index.html
-        grocery = Note(request.form.get(id=request.form.get("title")))
+        id = Note(request.form.get(id=request.form.get("title")))
+        db.session.add(id)
+        db.session.commit()
 
     # load web site and issue query command to DB
 
@@ -38,14 +40,14 @@ def create_note(text):
     note = Note(text=text)
     
     # database commands SQLAlchemy
-    db.session.add(note)
+    db.session.add(id)
     db.session.commit()
-    db.session.refresh(note)
+    db.session.refresh(id)
 
 def read_notes():
     return db.session.query(Note).all()
 
-@app.route("/", methods=["POST", "GET"]) # post commands below (execute FLASK)
+@app.route("/", methods=["GET", "POST"]) # post commands below (execute FLASK)
 def view_index():
     if request.method == "POST":
         create_note(request.form['title'])
