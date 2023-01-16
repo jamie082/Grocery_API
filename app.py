@@ -57,6 +57,7 @@ def view_index():
 @app.route("/update", methods=["POST"]) # CRUD operations and FLASK operations
 def update():
     db.session.query(Note).update() # SQLAlchemy commands
+    db.session.commit()
 
 def delete_note():
     db.session.query(Note).filter_by(id=note_id).delete() # SQLAlchemy commands
