@@ -1,0 +1,19 @@
+<html>
+    <body>
+    <head>
+        <title>Simple Flask TODO app in Python Flask</title>
+    </head>
+    <h1>Groceries to Add</h1>
+    <form method="POST" action="/">
+        <input type="text" name="title"><br /><br />
+        <input type="submit" value="Add">
+    </form>
+
+    <h1>Groceries</h1>
+    {% for note in notes %}
+    <p>
+    {{book.title}}
+    <hr>
+    {% endfor %}
+    </body>
+</html>
