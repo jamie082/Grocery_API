@@ -61,6 +61,7 @@ def home():
 @app.route("/search", methods=["GET"])
 def search():
     # https://python-adv-web-apps.readthedocs.io/en/latest/flask_db2.html
+    query = request.args.get("query")
     
 
 if __name__ == "__main__":
