@@ -28,12 +28,13 @@ class Note(db.Model):
     def __repr(self_):
         return "<Title: {}".format(self.id)
 
+class DB(db.Model):
+    name = db.Column(db.String)
+
 @app.route("/update", methods=["POST"]) # CRUD operations and FLASK operations
 def update():
     newtitle = request.form.get("newtitle")
     oldtitle = request.form.get("oldtitle")
-
-
 
     book = Note.query.filter_by(id=oldtitle).first()
     book.id = newtitle
@@ -49,7 +50,7 @@ def home():
         if input == "ABC":
             print ("You typed ABC")
         else:
-            pass
+            pass            # also show example of raise value error
         
         db.session.add(book)
         db.session.commit()
@@ -62,8 +63,14 @@ def home():
 def search():
 
     # https://python-adv-web-apps.readthedocs.io/en/latest/flask_db2.html
-    
-    query = request.args.get("query")
-    
+
+    try:
+        query = request.args.get("id") # get input from web form in app_index.html
+        db_search = DB.query.filter_by(style='')
+
+    found = DB.query.all()
+
+    return render_template("search.html", found=found)
+
 if __name__ == "__main__":
     app.run(debug=True)
