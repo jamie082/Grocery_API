@@ -67,6 +67,8 @@ def search():
     try:
         query = request.args.get("id") # get input from web form in app_index.html
         db_search = DB.query.filter_by(style='')
+        db.session.add(db_search)
+        db.session.commit()
 
     found = DB.query.all()
 
