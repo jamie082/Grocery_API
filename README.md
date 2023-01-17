@@ -1,8 +1,8 @@
-tbis project uses CRUD and ORM
+tbis project uses CRUD and ORM (object-relational mapping), Flask, i'm starting a career in Flask and python 3 development. SQLAlchemy
 
 This project taught me how to use the Visual Studio SQLite extension also about lambda
 
-Movie database program written in Python3 and SQLAlchemy database software
+Grocery database program written in Python3 and SQLAlchemy database software
 
 also i found out about this
 
