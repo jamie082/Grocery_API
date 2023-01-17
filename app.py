@@ -49,7 +49,7 @@ def home():
         if input == "ABC":
             print ("You typed ABC")
         else:
-            raise ValueError("A very specific bad thing happened")
+            pass
         
         db.session.add(book)
         db.session.commit()
@@ -57,6 +57,11 @@ def home():
     books = Note.query.all() # SQLAlchemy commands
 
     return render_template("app_index.html", books=books)
+
+@app.route("/search", methods=["GET"])
+def search():
+    # https://python-adv-web-apps.readthedocs.io/en/latest/flask_db2.html
+    
 
 if __name__ == "__main__":
     app.run(debug=True)
