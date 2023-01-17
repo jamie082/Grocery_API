@@ -6,6 +6,7 @@ import logging
 # https://www.codementor.io/@garethdwyer/building-a-crud-application-with-flask-and-sqlalchemy-dm3wv7yu2
 # https://itnext.io/build-a-simple-crud-todo-app-with-python-flask-in-100-lines-of-code-or-less-97d8792f24be
 # https://snyk.io/advisor/python/Flask/functions/flask.request.form.get
+# https://stackoverflow.com/questions/42687067/python-flask-request-args-get-returning-nonetype
 
 from flask import Flask
 from flask import render_template
@@ -27,10 +28,10 @@ class Note(db.Model):
 
     def __repr(self_):
         return "<Title: {}".format(self.id)
-
+'''
 class DB(db.Model):
     name = db.Column(db.String)
-
+'''
 @app.route("/update", methods=["POST"]) # CRUD operations and FLASK operations
 def update():
     newtitle = request.form.get("newtitle")
@@ -59,25 +60,17 @@ def home():
 
     return render_template("app_index.html", books=books)
 
-@app.route("/search", methods=["GET"])
+@app.route("/search", methods=["GET", "POST"])
 def search():
 
-    # https://python-adv-web-apps.readthedocs.io/en/latest/flask_db2.html
+# https://www.blog.pythonlibrary.org/2017/12/13/flask-101-how-to-add-a-search-form/
 
-    try:
-        query = request.args.get("id") # get input from web form in app_index.html
-        db_search = DB.query.filter_by(style='')
-        db.session.add(db_search)
-        db.session.commit()
-    except:
-        # Executed if error in
-        # the try block
-        print("Error in the try block")
-        raise ValueError("A very specific bad thing happened")
+def search():
+    search = MusicSearchForm(request.form)
+    if request.method == 'POST':
+        return search_results(search)
 
-    found = DB.query.all()
-
-    return render_template("search.html", found=found)
+    return render_template("search.html", form=search)
 
 if __name__ == "__main__":
     app.run(debug=True)

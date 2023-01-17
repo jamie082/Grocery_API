@@ -15,3 +15,8 @@ with app.app_context():
 ... db.create_all()
 
 to fix the application context error: https://flask.palletsprojects.com/en/1.1.x/appcontext/
+
+
+Found out about Redshift Driver and SQLTools Extension in Visual Studio code, good for the app.
+
+use import logging
