@@ -1,9 +1,11 @@
+import os
+import logging
 
-import os 
-
+# add cURL functions to program
 
 # https://www.codementor.io/@garethdwyer/building-a-crud-application-with-flask-and-sqlalchemy-dm3wv7yu2
 # https://itnext.io/build-a-simple-crud-todo-app-with-python-flask-in-100-lines-of-code-or-less-97d8792f24be
+# https://snyk.io/advisor/python/Flask/functions/flask.request.form.get
 
 from flask import Flask
 from flask import render_template
@@ -31,15 +33,7 @@ def update():
     newtitle = request.form.get("newtitle")
     oldtitle = request.form.get("oldtitle")
 
-    if newtitle is None:
-        raise EMError("Specify entry")
-    else:
-        pass
 
-    if oldtitle is None:
-        raise EMError("Specify entry")
-    else:
-        pass
 
     book = Note.query.filter_by(id=oldtitle).first()
     book.id = newtitle
@@ -51,6 +45,12 @@ def home():
     if request.form:
         book = Note(id=request.form.get("id"))
 
+        input = request.form['id']
+        if input == "ABC":
+            print ("You typed ABC")
+        else:
+            raise ValueError("A very specific bad thing happened")
+        
         db.session.add(book)
         db.session.commit()
 
