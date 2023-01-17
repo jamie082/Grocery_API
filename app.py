@@ -69,6 +69,11 @@ def search():
         db_search = DB.query.filter_by(style='')
         db.session.add(db_search)
         db.session.commit()
+    except:
+        # Executed if error in
+        # the try block
+        print("Error in the try block")
+        raise ValueError("A very specific bad thing happened")
 
     found = DB.query.all()
 
