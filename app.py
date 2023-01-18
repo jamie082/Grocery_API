@@ -12,6 +12,7 @@ from flask import Flask
 from flask import render_template
 from flask import request
 from flask import redirect
+from forms import MusicSearchForm
 
 from flask_sqlalchemy import SQLAlchemy
 
@@ -65,12 +66,21 @@ def search():
 
 # https://www.blog.pythonlibrary.org/2017/12/13/flask-101-how-to-add-a-search-form/
 
+@app.route('/results')
 def search():
-    search = MusicSearchForm(request.form)
-    if request.method == 'POST':
-        return search_results(search)
+    results = []
+    search_string = search.data['search']
 
-    return render_template("search.html", form=search)
+    if search.data['search'] == '':
+        qry = db_session.query(Note)
+        results = qry.all()
+
+    if not results:
+        flash('No results found!')
+        return redirect('/')
+    else:
+        # display results
+        return render_template('results.html', table=table)
 
 if __name__ == "__main__":
     app.run(debug=True)

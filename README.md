@@ -20,3 +20,5 @@ to fix the application context error: https://flask.palletsprojects.com/en/1.1.x
 Found out about Redshift Driver and SQLTools Extension in Visual Studio code, good for the app.
 
 use import logging
+
+get_flashed_messages()
