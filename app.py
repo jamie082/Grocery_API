@@ -1,5 +1,6 @@
 import os
 import logging
+import flash
 
 # add cURL functions to program
 
@@ -61,27 +62,27 @@ def home():
 
     return render_template("app_index.html", books=books)
 
-@app.route("/search", methods=["GET", "POST"])
-def search():
 
 # https://www.blog.pythonlibrary.org/2017/12/13/flask-101-how-to-add-a-search-form/
 # https://flask.palletsprojects.com/en/2.2.x/patterns/flashing/
 
-@app.route('/results')
+@app.route("/results", methods=["GET"]) # 
 def search():
     results = []
-    search_string = search.data['search']
+    search_string = search.data['id'] # search form in name='id'
 
-    if search.data['search'] == '':
-        qry = db_session.query(Note)
+    if search.data['id'] == '':
+        qry = db.session.query(Note).all() # SQKAlchemy
         results = qry.all()
 
     if not results:
         flash('No results found!')
         return redirect('/')
+
     else:
         # display results
-        return render_template('search', table=table)
+
+        return render_template('search.html', qry=qry)
 
 if __name__ == "__main__":
     app.run(debug=True)

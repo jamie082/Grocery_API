@@ -1,4 +1,5 @@
-tbis project uses CRUD and ORM (object-relational mapping), Flask, i'm starting a career in Flask and python 3 development. SQLAlchemy
+How to build RESTful API in Flask / Python 3
+This project uses CRUD and ORM (object-relational mapping), Flask, i'm starting a career in Flask and python 3 development. SQLAlchemy
 
 This project taught me how to use the Visual Studio SQLite extension also about lambda
 
@@ -21,6 +22,7 @@ Found out about Redshift Driver and SQLTools Extension in Visual Studio code, go
 
 use import logging
 
+How to use Flash Messages in Python Flash
 get_flashed_messages()
 
 search a SQL databse, return the results
