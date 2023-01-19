@@ -7,12 +7,12 @@ import logging
 # https://itnext.io/build-a-simple-crud-todo-app-with-python-flask-in-100-lines-of-code-or-less-97d8792f24be
 # https://snyk.io/advisor/python/Flask/functions/flask.request.form.get
 # https://stackoverflow.com/questions/42687067/python-flask-request-args-get-returning-nonetype
+# http://github.com/driscollis/flask101 -- search results (add a search form)
 
 from flask import Flask
 from flask import render_template
 from flask import request
 from flask import redirect
-from forms import MusicSearchForm
 
 from flask_sqlalchemy import SQLAlchemy
 
@@ -65,6 +65,7 @@ def home():
 def search():
 
 # https://www.blog.pythonlibrary.org/2017/12/13/flask-101-how-to-add-a-search-form/
+# https://flask.palletsprojects.com/en/2.2.x/patterns/flashing/
 
 @app.route('/results')
 def search():
@@ -80,7 +81,7 @@ def search():
         return redirect('/')
     else:
         # display results
-        return render_template('results.html', table=table)
+        return render_template('search', table=table)
 
 if __name__ == "__main__":
     app.run(debug=True)

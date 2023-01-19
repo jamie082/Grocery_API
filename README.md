@@ -22,3 +22,5 @@ Found out about Redshift Driver and SQLTools Extension in Visual Studio code, go
 use import logging
 
 get_flashed_messages()
+
+search a SQL databse, return the results
