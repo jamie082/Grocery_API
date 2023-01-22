@@ -27,4 +27,4 @@ use import logging
 How to use Flash Messages in Python Flash
 get_flashed_messages()
 
-search a SQL databse, return the results
+search a SQLAlchemy database, return the results in search.html

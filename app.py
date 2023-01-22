@@ -47,7 +47,8 @@ def update():
 def home():
     if request.form:
 
-        input = request.form['id']
+        book = Note(id=request.form.get("id"))
+        input = request.form.get('id')
         if input == "ABC":
             print ("You typed ABC") # export to Visual Studio console if ABC typed in input form
         else:
@@ -67,20 +68,27 @@ def home():
 
 @app.route("/search", methods=["GET"])
 def search():
-    form_get = request.form.get('id')
-
-    query_db = []
+    error = None
     if request.form:
+
+        form_get = request.form('search') # search.html in 
+        query_db = Note.query.all() # query SQLALchemy database, found
+
+        query_db = []
         
-        if form_get == '':
-            flash("No results found")
+        if request.form:
         
-        elif form_get in query_db:  # if not in db
-            flash("Results found")
-        return redirect('/')
+            if form_get == query_db:
+                error = 'Invalid Credentials'
+        
+            elif form_get not in query_db:  # if not in db
+                flash("Results found")
+            
+            return redirect('/')
        
-    query_db = Note.query.all() # query SQLALchemy database, found
-    return render_template("search.html", query_db=query_db)
+    
+
+    return render_template("search.html", error=error)
 
 if __name__ == "__main__":
     app.run(debug=True)
