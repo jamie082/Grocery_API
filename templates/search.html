@@ -22,13 +22,9 @@
 
         <h3>Result: </h3>
         
-        {% with messages = get_flashed_messages()), ['Found', 'Not Found'] %}
-            {% if messages %}
-            <ul class="flashes">
-                <li>{{ message}}</li>
-            {% endfor %}
-            </ul>
-        {% endwith %}
+        {% for message in get_flashed_messages() %}
+        <h2>{{ message }}</h2>
+        {% endfor %}
 
         <!-- OUTPUT SEARCH RESULTS -->
     </body>

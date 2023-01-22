@@ -69,15 +69,18 @@ def home():
 
 @app.route("/results", methods=["GET"]) # 
 def search():
+    if request.method == 'POST':
     results = []
-    search_string = search.data['search'] # search form in name='id' in app_index.html
+    search_string = search.data['id'] # search form in name='id' in app_index.html
 
-    if search.data['search'] == '':
-        qry = db.session.query(Note).all() # SQKAlchemy database
+    #if search.data['search'] == '':
+    if request.form['id'] in urls.keys():
+        flash("No results found")
+        qry = db.session.query(Note).all() # SQLAlchemy database
         results = qry.all()
 
     if not results:
-        flash('No results found!')
+        flash('Results found')
         return redirect('/')
 
     else:
