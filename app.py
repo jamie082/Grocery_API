@@ -1,6 +1,6 @@
 import os
 import logging
-import flash
+from flask import flash
 
 # WTforms module 
 # add cURL functions to program
@@ -22,6 +22,7 @@ project_dir = os.path.dirname(os.path.abspath(__file__))
 database_file = "sqlite:///{}".format(os.path.join(project_dir, "bookdatabase.db"))
 
 app = Flask(__name__)
+app.secret_key = b'_5#y2L"F4Q8z\n\xec]/'
 app.config["SQLALCHEMY_DATABASE_URI"] = database_file
 
 db = SQLAlchemy(app)
@@ -70,6 +71,7 @@ def home():
 
 @app.route("/search", methods=["GET", "POST"]) # 
 def search():
+    query_db = []
     
     form_get = request.form.get('id')
         
@@ -77,8 +79,8 @@ def search():
         flash("No results found")
         query_db = Note.query.all() # query SQLALchemy database
 
-    if not query_db:
-        flash('Results found')
+    if not query_db:  # if not in db
+        flash("Results found")
         return redirect('/')
 
     else:
