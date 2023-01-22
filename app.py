@@ -66,27 +66,23 @@ def home():
 
 # https://www.blog.pythonlibrary.org/2017/12/13/flask-101-how-to-add-a-search-form/
 # https://flask.palletsprojects.com/en/2.2.x/patterns/flashing/
+# https://www.blog.pythonlibrary.org/2017/12/13/flask-101-how-to-add-a-search-form/
 
-@app.route("/results", methods=["GET"]) # 
+@app.route("/search", methods=["GET", "POST"]) # 
 def search():
-    if request.method == 'POST':
-        results = []
-        search_string = search.data['id'] # search form in name='id' in app_index.html
+    
+    form_get = request.form.get('id')
+        
+    if form_get == '':
+        flash("No results found")
+        query_db = Note.query.all() # query SQLALchemy database
 
-        #if search.data['search'] == '':
-        if request.form['id'] in urls.keys():
-            flash("No results found")
-            qry = db.session.query(Note).all() # SQLAlchemy database
-            results = qry.all()
+    if not query_db:
+        flash('Results found')
+        return redirect('/')
 
-        if not results:
-            flash('Results found')
-            return redirect('/')
+    else:
+         return render_template('search.html', query_db=query_db)
 
-        else:
-            # display results
-
-            return render_template('search.html', results=results)
-
-    if __name__ == "__main__":
-        app.run(debug=True)
+if __name__ == "__main__":
+    app.run(debug=True)
