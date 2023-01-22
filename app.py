@@ -32,10 +32,7 @@ class Note(db.Model):
 
     def __repr(self_):
         return "<Title: {}".format(self.id)
-'''
-class DB(db.Model):
-    name = db.Column(db.String)
-'''
+
 @app.route("/update", methods=["POST"]) # CRUD operations and FLASK operations
 def update():
     newtitle = request.form.get("newtitle")
@@ -49,7 +46,6 @@ def update():
 @app.route("/", methods=["GET", "POST"]) # post commands below (execute FLASK)
 def home():
     if request.form:
-        book = Note(id=request.form.get("id"))
 
         input = request.form['id']
         if input == "ABC":
@@ -69,22 +65,22 @@ def home():
 # https://flask.palletsprojects.com/en/2.2.x/patterns/flashing/
 # https://www.blog.pythonlibrary.org/2017/12/13/flask-101-how-to-add-a-search-form/
 
-@app.route("/search", methods=["GET", "POST"]) # 
+@app.route("/search", methods=["GET"])
 def search():
-    query_db = []
-    
     form_get = request.form.get('id')
+
+    query_db = []
+    if request.form:
         
-    if form_get == '':
-        flash("No results found")
-        query_db = Note.query.all() # query SQLALchemy database
-
-    if not query_db:  # if not in db
-        flash("Results found")
+        if form_get == '':
+            flash("No results found")
+        
+        elif form_get in query_db:  # if not in db
+            flash("Results found")
         return redirect('/')
-
-    else:
-         return render_template('search.html', query_db=query_db)
+       
+    query_db = Note.query.all() # query SQLALchemy database, found
+    return render_template("search.html", query_db=query_db)
 
 if __name__ == "__main__":
     app.run(debug=True)
