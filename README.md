@@ -17,6 +17,8 @@ with app.app_context():
 
 to fix the application context error: https://flask.palletsprojects.com/en/1.1.x/appcontext/
 
+brought my upon the link how to shorten a URL in python using message flashing using get_flashed_messaged()
+
 
 Found out about Redshift Driver and SQLTools Extension in Visual Studio code, good for the app.
 

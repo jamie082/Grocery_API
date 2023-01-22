@@ -2,6 +2,7 @@ import os
 import logging
 import flash
 
+# WTforms module 
 # add cURL functions to program
 
 # https://www.codementor.io/@garethdwyer/building-a-crud-application-with-flask-and-sqlalchemy-dm3wv7yu2
@@ -51,7 +52,7 @@ def home():
 
         input = request.form['id']
         if input == "ABC":
-            print ("You typed ABC")
+            print ("You typed ABC") # export to Visual Studio console if ABC typed in input form
         else:
             pass            # also show example of raise value error
         
@@ -69,10 +70,10 @@ def home():
 @app.route("/results", methods=["GET"]) # 
 def search():
     results = []
-    search_string = search.data['id'] # search form in name='id'
+    search_string = search.data['search'] # search form in name='id' in app_index.html
 
-    if search.data['id'] == '':
-        qry = db.session.query(Note).all() # SQKAlchemy
+    if search.data['search'] == '':
+        qry = db.session.query(Note).all() # SQKAlchemy database
         results = qry.all()
 
     if not results:
@@ -82,7 +83,7 @@ def search():
     else:
         # display results
 
-        return render_template('search.html', qry=qry)
+        return render_template('search.html', results=results)
 
 if __name__ == "__main__":
     app.run(debug=True)
