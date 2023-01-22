@@ -49,6 +49,7 @@ def home():
 
         book = Note(id=request.form.get("id"))
         input = request.form.get('id')
+        
         if input == "ABC":
             print ("You typed ABC") # export to Visual Studio console if ABC typed in input form
         else:
@@ -61,34 +62,24 @@ def home():
 
     return render_template("app_index.html", books=books)
 
-
-# https://www.blog.pythonlibrary.org/2017/12/13/flask-101-how-to-add-a-search-form/
-# https://flask.palletsprojects.com/en/2.2.x/patterns/flashing/
-# https://www.blog.pythonlibrary.org/2017/12/13/flask-101-how-to-add-a-search-form/
-
-@app.route("/search", methods=["GET"])
+@app.route("/search", methods=["GET", "POST"])
 def search():
     error = None
     if request.form:
 
-        form_get = request.form('search') # search.html in 
-        query_db = Note.query.all() # query SQLALchemy database, found
-
         query_db = []
+        form_get = request.form.get('search') # search.html in 
+        book = Note(id=request.form.get("id"))
         
-        if request.form:
         
-            if form_get == query_db:
-                error = 'Invalid Credentials'
-        
-            elif form_get not in query_db:  # if not in db
-                flash("Results found")
+        if form_get == query_db == "true":
+            error = 'Invalid Credentials'
+        elif form_get not in query_db:  # if not in db
+            flash("Results found")
             
-            return redirect('/')
-       
-    
-
-    return render_template("search.html", error=error)
+            #return redirect('/')
+    query_db = Note.query.all() # query SQLALchemy database, found
+    return render_template("search.html", query_db=query_db)
 
 if __name__ == "__main__":
     app.run(debug=True)
