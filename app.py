@@ -1,6 +1,7 @@
 import os
 import logging
 from flask import flash
+import sqlite3
 
 # WTforms module 
 # add cURL functions to program
@@ -64,22 +65,28 @@ def home():
 
 @app.route("/search", methods=["GET", "POST"])
 def search():
-    error = None
     if request.form:
+        #1. get Search key from request.form.get("id")
+        #2. if not found, return an error.html page
 
-        query_db = []
-        form_get = request.form.get('search') # search.html in 
-        book = Note(id=request.form.get("id"))
-        
-        
-        if form_get == query_db == "true":
-            error = 'Invalid Credentials'
-        elif form_get not in query_db:  # if not in db
-            flash("Results found")
-            
-            #return redirect('/')
-    query_db = Note.query.all() # query SQLALchemy database, found
-    return render_template("search.html", query_db=query_db)
+        # Create a SQL connection to our SQLlite database
+        input = request.form.get('id')
+        con = sqlite3 = sqlite3.connect("bookdatabase.db")
+        cur = con.cursor()
+
+        ''' The result of our "cursor.execute" can be interated over by a row
+        for row in cur.execute('SELECT * FROM note WHERE id="abc"'):
+            print (row)
+        cur.fetchall()'''
+
+        # execute one command then make it to posts from Flask API
+        posts = conn.execute('SELECT * FROM note').fetchone() # output entire DB to console
+        conn.execute('DELETE FROM posts WHERE id = ?', (input,)) # this is the QUERY command
+        conn.close()
+
+        # flash('"{}" was successfully deleted!'.format(post['title'])) # flash messaging
+
+    return render_template("search.html", posts=posts)
 
 if __name__ == "__main__":
     app.run(debug=True)

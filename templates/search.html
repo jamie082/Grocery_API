@@ -22,8 +22,12 @@
 
         <h3>Result: </h3>
         
-        {% for message in get_flashed_messages() %}
-        <h2>{{ message }}</h2>
+        {% for post in posts %}
+            <div class='post'>
+                <p>{{ post['created'] }}</p>
+                <h2>{{ post['title'] }}</h2>
+                <p>{{ post['content'] }}</p>
+            </div>
         {% endfor %}
 
         <!-- OUTPUT SEARCH RESULTS -->

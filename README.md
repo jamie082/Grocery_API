@@ -28,3 +28,5 @@ How to use Flash Messages in Python Flash
 get_flashed_messages()
 
 search a SQLAlchemy database, return the results in search.html
+
+I learned about cur.execute
