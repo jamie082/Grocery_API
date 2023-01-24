@@ -30,3 +30,5 @@ get_flashed_messages()
 search a SQLAlchemy database, return the results in search.html
 
 I learned about cur.execute
+
+I learned about preventing SQL Injection, how to properly prevent from SQL attacks
