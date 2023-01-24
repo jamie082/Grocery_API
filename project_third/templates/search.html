@@ -1,0 +1,35 @@
+<!-- SEARCH FORM FOR SQLAlchemy -->
+
+
+<!-- https://www.blog.pythonlibrary.org/2017/12/13/flask-101-how-to-add-a-search-form/ -->
+
+<!DOCTYPE html>
+<html>
+    <body>
+        <head>
+            <link rel="stylesheet" href="mystyle.css">
+            <title>Search Database for string</title>
+        </head>
+
+
+        <h1>Search SQLAlchemy database for entry</h1>
+        <form method="POST" action="/">
+            <input type="text" name="search">
+            <input type="submit" value="Search Database">
+        </form>
+        
+        <!-- print "Found" or "Not Found" in Red (#FF0000)-->
+
+        <h3>Result: </h3>
+        
+        {% with messages = get_flashed_messages() %}
+            {% if messages %}
+                {% for message in get_flashed_messages() %}
+                    <h2>{{ message }}</h2>
+                {% endfor %}
+            {% endif %}
+        {% endwith %}
+
+        <!-- OUTPUT SEARCH RESULTS -->
+    </body>
+</html>
