@@ -27,7 +27,7 @@ db = SQLAlchemy(app)
 class Note(db.Model):
     id = db.Column(db.String(80), unique=True, nullable=False, primary_key=True)
 
-    def __repr(self_):
+    def __repr(self):
         return "<Title: {}".format(self.id)
 
 @app.route("/update", methods=["POST"]) # CRUD operations and FLASK operations
@@ -59,16 +59,18 @@ def home():
 
     return render_template("app_index.html", books=books)
 
-@app.route("/search", methods=["GET"])
+@app.route("/search", methods=["GET", "POST"])
 def search():
-
-            input = request.form.get('id')
+            input = request.form.get('search')
             con = sqlite3.connect("bookdatabase.db")
             cur = con.cursor()
 
             id_select = ('input',)
-            # posts = con.execute('SELECT * FROM note WHERE id=?', id_select).fetchall()
+            #posts = con.execute('SELECT * FROM note WHERE id=?', id_select).fetchall()
             posts = con.execute('SELECT * from note').fetchall()
+            
+            print("An error occured")
+
             return render_template("search.html", posts=posts)
 
 if __name__ == "__main__":

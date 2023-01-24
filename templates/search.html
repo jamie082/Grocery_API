@@ -1,11 +1,6 @@
 <!-- SEARCH FORM FOR SQLAlchemy -->
-
-
-<!-- https://www.blog.pythonlibrary.org/2017/12/13/flask-101-how-to-add-a-search-form/ -->
-
 <!DOCTYPE html>
-<html>
-    <body>
+<body>
         <head>
             <link rel="stylesheet" href="mystyle.css">
             <title>Search Database for string</title>
@@ -24,10 +19,10 @@
         
         {% for post in posts %}
             <div class='post'>
-                <p>{{ post }}</p>
+                <h2>{{ post }}</h2>
             </div>
         {% endfor %}
 
         <!-- OUTPUT SEARCH RESULTS -->
-    </body>
+</body>
 </html>
