@@ -15,20 +15,9 @@ with app.app_context():
 
 ... db.create_all()
 
-to fix the application context error: https://flask.palletsprojects.com/en/1.1.x/appcontext/
-
-brought my upon the link how to shorten a URL in python using message flashing using get_flashed_messaged()
-
-
 Found out about Redshift Driver and SQLTools Extension in Visual Studio code, good for the app.
 
 use import logging
-
-search a SQLAlchemy database, return the results in search.html
-
-I learned about cur.execute
-
-I learned about preventing SQL Injection, how to properly prevent from SQL attacks, learned about INSERT and SELECT database commands..
 
 
 ## Table of contents
@@ -37,13 +26,12 @@ I learned about preventing SQL Injection, how to properly prevent from SQL attac
 * [Setup](#setup)
 
 ## General info
-This project is simple Lorem ipsum dolor generator.
+I learned about prevening SQL Injecdtion, how to properly prevent out of bound strings, learned about INSERT and SELECTD database commands.,.. leanred about cur.execute.  Also, Download teh DB Browser for SQLite Program for Mac OS X to load the SQLite database on my Mac Book Air and browse the Table and view it.
 	
 ## Technologies
 Project is created with:
-* Lorem version: 12.3
-* Ipsum version: 2.33
-* Ament library version: 999
+* Python 3.9.6
+* Flask
 	
 ## Setup
 To run this project, install it locally using npm:
