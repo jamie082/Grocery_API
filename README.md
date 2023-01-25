@@ -27,6 +27,9 @@ use import logging
 
 ## General info
 I learned about prevening SQL Injecdtion, how to properly prevent out of bound strings, learned about INSERT and SELECTD database commands.,.. leanred about cur.execute.  Also, Download teh DB Browser for SQLite Program for Mac OS X to load the SQLite database on my Mac Book Air and browse the Table and view it.
+
+http://127.0.0.1:5000/search
+http://127.0.0.1:5000
 	
 ## Technologies
 Project is created with:
