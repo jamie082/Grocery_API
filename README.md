@@ -3,7 +3,7 @@ This project usess CRUD and ORM (object-relation mapping), Flask and SQLAlchemy)
 
 Grocery database program written in Python3 and SQLAlchemy database software
 
-also i found out about this by googling around the internet encoungering a db error for the program
+Also I found out about this by googling around the internet encoungering a db error for the program
 from app import app
 from app import db
 
