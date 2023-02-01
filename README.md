@@ -1,29 +1,22 @@
-How to build RESTful API in Flask / Python 3 with ORM
+w to build RESTful API in Flask / Python 3 with ORM
 This project uses CRUD and ORM (object-relational mapping), Flask, i'm starting a career in Flask and python 3 development. SQLAlchemy
 
+# What this program Grocery-DB is about
 This project taught me how to use the Visual Studio SQLite extension also about lambda
 
 Grocery database program written in Python3 and SQLAlchemy database software
 
-also i found out about this
-
+also i found out about this by googling around the internet encoungering a db error for the program
 from app import app
-
 from app import db
 
 with app.app_context():
 
 ... db.create_all()
 
-Found out about Redshift Driver and SQLTools Extension in Visual Studio code, good for the app.
+Found out about Redshift Driver and SQLTools Extension in Visual Studio code, good for the app, then later found out about DB Browser for SQLite on Mac OS X
 
-use import logging
-
-
-## Table of contents
-* [General info](#general-info)
-* [Technologies](#technologies)
-* [Setup](#setup)
+use import logging (a good module for Python3) but didnt get a chance to use it
 
 ## General info
 I learned about prevening SQL Injecdtion, how to properly prevent out of bound strings, learned about INSERT and SELECTD database commands.,.. leanred about cur.execute.  Also, Download teh DB Browser for SQLite Program for Mac OS X to load the SQLite database on my Mac Book Air and browse the Table and view it.
