@@ -1,8 +1,5 @@
-w to build RESTful API in Flask / Python 3 with ORM
-This project uses CRUD and ORM (object-relational mapping), Flask, i'm starting a career in Flask and python 3 development. SQLAlchemy
-
 # What this program Grocery-DB is about
-This project taught me how to use the Visual Studio SQLite extension also about lambda
+This project usess CRUD and ORM (object-relation mapping), Flask and SQLAlchemy). This project taught me how to use the Visual Studio SQLite extension also about lambda
 
 Grocery database program written in Python3 and SQLAlchemy database software
 
