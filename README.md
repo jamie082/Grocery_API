@@ -23,5 +23,5 @@ http://127.0.0.1:5000<p>
 	
 ## Technologies
 Project is created with:
-* Python3
-* Flask
+* Python 3.9.6
+* Flask (2.2.x)
