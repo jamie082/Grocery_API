@@ -26,14 +26,5 @@ http://127.0.0.1:5000<p>
 	
 ## Technologies
 Project is created with:
-* Python 3.9.6
+* Python3
 * Flask
-	
-## Setup
-To run this project, install it locally using npm:
-
-```
-$ cd ../lorem
-$ npm install
-$ npm start
-```
