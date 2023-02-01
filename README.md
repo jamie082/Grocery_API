@@ -16,7 +16,7 @@ Found out about Redshift Driver and SQLTools Extension in Visual Studio code, go
 use import logging (a good module for Python3) but didnt get a chance to use it
 
 ## General info
-I learned about prevening SQL Injecdtion, how to properly prevent out of bound strings, learned about INSERT and SELECTD database commands.,.. leanred about cur.execute.  Also, Download teh DB Browser for SQLite Program for Mac OS X to load the SQLite database on my Mac Book Air and browse the Table and view it.
+I learned about prevening SQL Injection, how to properly prevent out of bound strings, learned about INSERT and SELECTD database commands.,.. leanred about cur.execute.  Also, Download teh DB Browser for SQLite Program for Mac OS X to load the SQLite database on my Mac Book Air and browse the Table and view it.
 
 http://127.0.0.1:5000/search<p>
 http://127.0.0.1:5000<p>
