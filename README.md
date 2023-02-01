@@ -1,4 +1,4 @@
-# What this program Grocery-DB is about
+# What this program Grocery-API is about
 This project usess CRUD and ORM (object-relation mapping), Flask and SQLAlchemy). This project taught me how to use the Visual Studio SQLite extension also about lambda
 
 Grocery database program written in Python3 and SQLAlchemy database software
